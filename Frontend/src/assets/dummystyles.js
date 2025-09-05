@@ -676,10 +676,10 @@ export const formContainer = "flex gap-4 flex-col sm:flex-row items-stretch";
 export const inputWrapper = "flex-1 relative group";
 
 export const inputField =
-  "w-full pl-12 md:pl-14 pr-4 md:pr-6 py-3 md:py-4 bg-transparent border-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#43C6AC]/50 text-gray-800 placeholder-gray-400 text-base md:text-lg font-medium";
+  "w-full pl-12 md:pl-14 pr-4 md:pr-6 py-3 md:py-4 bg-transparent border-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#43C6AC]/50 text-gray-800 placeholder-gray-400 text-base md:text-lg font-medium rounded-lg md:rounded-xl transition-all";
 
 export const searchButton =
-  "px-6 md:px-8 py-3 md:py-4 bg-gradient-to-r from-[#2B5876] to-[#43C6AC] text-white rounded-lg md:rounded-xl font-medium hover:shadow-lg transition-all duration-300 shadow-md flex items-center gap-2 justify-center hover:-translate-y-0.5 text-sm md:text-base";
+  "px-6 md:px-8 py-3 md:py-4 bg-gradient-to-r from-[#2B5876] to-[#43C6AC] text-white rounded-lg md:rounded-xl font-medium hover:shadow-lg transition-all duration-300 shadow-md flex items-center gap-2 justify-center hover:-translate-y-0.5 text-sm md:text-base cursor-pointer";
 
 export const statsContainer = "flex flex-wrap gap-4 md:gap-6 pt-4 md:pt-6 justify-center md:justify-start";
 
@@ -695,7 +695,7 @@ export const imageWrapper =
   "relative w-full max-w-md lg:max-w-lg aspect-square bg-gradient-to-br from-white/20 to-[#F8FFAE]/10 rounded-xl md:rounded-2xl overflow-hidden";
 
 export const imageStyle =
-  "w-full h-full object-contain object-center transform group-hover:scale-[1.02] transition-transform duration-500";
+  "w-full h-full object-cover object-center transform group-hover:scale-[1.02] transition-transform duration-500 rounded-full p-4";
 
 export const overlayEffect =
   "absolute inset-0 mix-blend-overlay bg-gradient-to-t from-[#2B5876]/10 to-transparent";
