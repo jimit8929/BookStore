@@ -577,8 +577,11 @@ export const navbarStyles = {
   navLink:
     "relative group px-4 py-2 rounded-lg transition-all duration-300 overflow-hidden flex items-center",
 
-  navIconWrapper: (color) =>
-    `absolute -inset-1 rounded-full opacity-0 blur-lg group-hover:opacity-30 transition-all duration-400 bg-gradient-to-r ${color}`,
+navIconWrapper: (color) =>
+  `absolute -inset-1 rounded-full pointer-events-none transform scale-105 opacity-0 blur-md group-hover:opacity-100 group-hover:scale-100 transition-opacity transition-transform duration-300 ease-out bg-gradient-to-r ${color} bg-opacity-90 mix-blend-screen shadow-[0_8px_30px_rgba(43,88,118,0.12)] will-change-transform motion-safe:transition-all
+`,
+
+
 
   navIcon: (isActive) =>
     `relative h-5 w-5 flex-shrink-0 ${isActive ? "text-white" : "text-gray-600 group-hover:text-white"} transition-colors duration-300 z-10`,
@@ -722,7 +725,7 @@ export const ourBestSellersStyles = {
   navWrapper: "flex items-center gap-3 w-full md:w-auto",
   navLine: "hidden md:block flex-1 border-t border-gray-200",
   navButtons: "flex items-center gap-2 md:gap-3",
-  navBtn: "p-2 md:p-3 rounded-full bg-white shadow-md md:shadow-lg hover:shadow-lg transition-shadow",
+  navBtn: "p-2 md:p-3 rounded-full bg-white shadow-lg md:shadow-xl hover:shadow-lg transition-shadow cursor-pointer hover:scale-105 border border-black",
   navIcon: "text-[#1A237E]",
 
   // Scroll container

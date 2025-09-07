@@ -24,7 +24,7 @@ const loadInitialState = () => {
 
 const cartReducer = (state, action) => {
   switch (action.type) {
-    case "ADD ITEM": {
+    case "ADD_ITEM": {
       const itemToAdd = {
         ...action.payload,
         quantity: action.payload.quantity || 1,
