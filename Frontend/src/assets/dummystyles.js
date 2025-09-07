@@ -799,7 +799,7 @@ export const homeAboutStyles = {
   aboutHeader: "text-3xl md:text-4xl font-bold bg-gradient-to-r from-[#43C6AC] to-[#2B5876] bg-clip-text text-transparent mb-4",
   underline: "h-1 w-20 bg-gradient-to-r from-[#43C6AC] to-[#F8FFAE] rounded-full",
   aboutText: "text-gray-600 leading-relaxed",
-  statGrid: "grid grid-cols-1 md:grid-cols-3 gap-6",
+  statGrid: "grid grid-cols-3 md:grid-cols-3 gap-6",
   statCard: "bg-white border-2 border-[#43C6AC]/20 rounded-xl p-4 text-center shadow-lg",
   statIconWrap: "inline-flex items-center justify-center p-3 bg-[#F8FFAE] rounded-full mb-3",
   statIcon: "h-6 w-6 text-[#43C6AC]",
