@@ -750,15 +750,15 @@ export const ourBestSellersStyles = {
   addButton: "flex items-center gap-1.5 md:gap-2 px-4 md:px-6 py-2 md:py-3 bg-gradient-to-r from-[#1A237E] to-[#43C6AC] text-white rounded-lg md:rounded-xl font-medium hover:scale-[1.02] transition-transform text-sm md:text-base",
 
   // Book Image
-  bookImage: "absolute right-4 md:right-6 bottom-4 md:bottom-6 w-20 h-28 md:w-[120px] md:h-[180px] object-cover rounded-lg md:rounded-xl border-2 md:border-4 border-white shadow-xl md:shadow-2xl transform group-hover:-translate-y-1 md:group-hover:-translate-y-2 transition-transform",
-};
-
+bookImage: "absolute right-8 md:right-36 bottom-4 md:bottom-6 w-80 h-40 md:w-[120px] md:h-[180px] object-cover rounded-lg md:rounded-xl border-2 md:border-4 border-white shadow-xl md:shadow-2xl transform group-hover:-translate-y-1 md:group-hover:-translate-y-2 transition-transform"
+}
 
 // homeBooksStyles
 
+
 export const homeBooksStyles = {
   section: "py-20 bg-gradient-to-br from-[#43C6AC] to-[#F8FFAE] relative",
-  container: "max-w-7xl mx-auto px-4 md:px-6",
+  container: "container mx-auto px-4 md:px-6",
   card: "bg-white rounded-2xl shadow-lg p-8 md:p-12",
   heading: "text-3xl md:text-4xl font-bold bg-gradient-to-r from-[#43C6AC] to-[#2B5876] bg-clip-text text-transparent mb-4",
   headingLine: "h-1 w-20 bg-gradient-to-r from-[#43C6AC] to-[#F8FFAE] rounded-full mx-auto",
@@ -781,7 +781,7 @@ export const homeBooksStyles = {
   viewBtn:
     "group inline-flex items-center justify-center px-6 py-3 rounded-full border-2 border-[#43C6AC] text-[#43C6AC] hover:bg-[#43C6AC]/10 transition-all",
   viewIcon: "ml-2 h-4 w-4 transition-transform group-hover:translate-x-1",
-};
+}
 
 
 // homeAboutStyles
