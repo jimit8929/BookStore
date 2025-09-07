@@ -559,7 +559,7 @@
 export const navbarStyles = {
   nav: (scrolled) =>
     `fixed inset-x-4 top-4 z-50 bg-white/95 backdrop-blur-sm transition-all duration-400 ${
-      scrolled ? "shadow-md py-2 rounded-xl" : "py-4 rounded-2xl"
+      scrolled ? "shadow-md py-2 rounded-xl" : "py-4 rounded-2xlquic"
     }`,
 
   container: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8",
@@ -829,7 +829,7 @@ export const homeAboutStyles = {
 
 export const footerStyles = {
   footer: "bg-gray-100 border-t border-[#43C6AC]/20 pt-16 pb-8 relative",
-  container: "max-w-7xl mx-auto px-4 md:px-6",
+  container: "container mx-auto px-4 md:px-6",
   grid: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12",
   logoBlock: "space-y-4",
   logoLink: "inline-flex items-center gap-2",
@@ -837,19 +837,19 @@ export const footerStyles = {
   logoText: "text-2xl font-bold bg-gradient-to-r from-[#43C6AC] to-[#2B5876] bg-clip-text text-transparent",
   aboutText: "text-gray-600 text-sm leading-relaxed",
   socialWrap: "flex gap-3",
-  socialButton: "flex items-center justify-center w-9 h-9 rounded-full bg-white border border-[#43C6AC]/30 hover:border-[#43C6AC] hover:bg-[#F8FFAE]/20 transition-all duration-200",
+  socialButton: "flex items-center justify-center w-9 h-9 rounded-full bg-white border border-[#43C6AC]/30 hover:border-[#43C6AC] hover:bg-[#F8FFAE]/20 transition-all duration-300",
   socialIcon: "h-4 w-4 text-[#43C6AC] transition-colors duration-300",
   quickLinksBlock: "space-y-4",
-  quickLinksTitle: "text-lg font-semibold text-gray-900 mb-2",
+  quickLinksTitle: "text-lg font-semibold text-gray-800 mb-2",
   quickLinksList: "space-y-2.5",
   quickLinkItem: "group inline-flex items-center text-gray-600 hover:text-[#43C6AC] transition-colors duration-300 text-sm",
-  quickLinkDot: "w-1.5 h-1.5 bg-[#43C6AC] rounded-full mr-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200",
+  quickLinkDot: "w-1.5 h-1.5 bg-[#43C6AC] rounded-full mr-2 opacity-100 transition-opacity duration-200",
   newsletterBlock: "space-y-4",
   newsletterTitle: "text-lg font-semibold text-gray-900 mb-2",
   newsletterText: "text-gray-600 text-sm leading-relaxed",
   formWrap: "relative",
   input: "w-full px-4 py-2.5 bg-white border border-[#43C6AC]/30 rounded-lg text-gray-600 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#43C6AC]/50 transition-all pr-12",
-  button: "absolute right-1 top-1 p-2 bg-gradient-to-r from-[#43C6AC] to-[#F8FFAE] rounded-md text-white hover:scale-105 transform transition-all shadow-sm",
+  button: "absolute right-1 top-1 p-2 bg-gradient-to-r from-[#43C6AC] to-[#F8FFAE] rounded-md text-white hover:scale-105 transform transition-all shadow-sm hover:shadow-[#43C6AC]/30",
   contactBlock: "space-y-4",
   contactTitle: "text-lg font-semibold text-gray-900 mb-2",
   contactList: "space-y-3",
@@ -859,7 +859,7 @@ export const footerStyles = {
   contactIconInline: "h-4 w-4 text-[#43C6AC] mr-2 flex-shrink-0",
   copyrightWrap: "border-t border-[#43C6AC]/20 pt-6 text-center",
   copyrightText: "text-gray-500 text-sm",
-};
+}
 
 
 // ContactUsPage styles
