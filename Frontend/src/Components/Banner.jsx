@@ -48,7 +48,7 @@ const Banner = () => {
     e.preventDefault();
 
     if (searcQuery.trim()) {
-      navigate(`/books/search=${encodeURIComponent(searcQuery.trim())}`);
+      navigate(`/books?search=${encodeURIComponent(searcQuery.trim())}`);
       setSearchQuery("");
     }
   };
@@ -80,8 +80,11 @@ const Banner = () => {
 
               <p className={paragraphText}>
                 Dive into a world of knowledge and imagination with our curated
-                collection of books. Whether you're seeking inspiration,
-                adventure, or learning, we have something for every reader.
+                collection of books. Whether you're seeking{" "}
+                <span className="text-[#2B5876] font-semibold">
+                  {words[currentWord]}
+                </span>
+                , adventure, or learning, we have something for every reader.
               </p>
             </div>
 
@@ -138,10 +141,10 @@ const Banner = () => {
         {/* Footer Texts */}
         <div className={scrollTextSection}>
           <div className={scrollText}>
-            Curated Collections • Award-Winning Authors • Critical Analysis • Cultural Perspective
+            Curated Collections • Award-Winning Authors • Critical Analysis •
+            Cultural Perspective
           </div>
         </div>
-
       </div>
     </div>
   );
