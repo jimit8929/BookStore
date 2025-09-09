@@ -445,6 +445,8 @@
 //   sendIconWrapperStyle: "flex items-center",
 // };
 
+
+
 // export const styles = {
 //   container: "min-h-screen bg-gray-50 pt-24 pb-12 px-4 sm:px-6 lg:px-8",
 //   wrapper: "max-w-6xl mx-auto",
@@ -1071,3 +1073,52 @@ export const loginStyles = {
   signOutButton:
     "w-full text-gray-600 py-3 rounded-lg border hover:bg-gray-50 transition-colors",
 };
+
+export const Cartstyles = {
+  container: "min-h-screen bg-gray-50 pt-24 pb-12 px-4 sm:px-6 lg:px-8",
+  wrapper: "max-w-6xl mx-auto",
+  header: "mb-8 md:mb-12 text-center",
+  title: "text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-2 md:mb-3 flex items-center justify-center gap-2 md:gap-3",
+  titleIcon: "h-7 w-7 md:h-9 md:w-9 text-emerald-600",
+  subtitle: "text-gray-600 text-sm md:text-base lg:text-lg",
+  emptyCard: "max-w-md mx-auto bg-white rounded-xl md:rounded-2xl p-6 md:p-8 text-center shadow-sm border border-gray-100",
+  emptyIconWrapper: "flex justify-center mb-4 md:mb-6",
+  emptyIcon: "h-12 w-12 md:h-16 md:w-16 text-emerald-600",
+  emptyTitle: "text-xl md:text-2xl font-semibold text-gray-900 mb-3 md:mb-4",
+  emptyDescription: "text-gray-600 text-sm md:text-base mb-6 md:mb-8",
+  browseBtn: "inline-flex items-center justify-center px-5 py-2.5 md:px-6 md:py-3 rounded-lg md:rounded-xl bg-emerald-600 text-white font-medium hover:bg-emerald-700 transition-colors gap-2 text-sm md:text-base",
+  browseIcon: "h-4 w-4 md:h-5 md:w-5",
+  cartGrid: "grid lg:grid-cols-3 gap-6 md:gap-8",
+  cartItems: "lg:col-span-2 space-y-4 md:space-y-6",
+  cartItemCard: "bg-white rounded-lg md:rounded-xl p-4 md:p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow",
+  cartItemContent: "flex gap-4 md:gap-6",
+  cartItemImage: "w-16 h-20 md:w-24 md:h-32 object-cover rounded-md md:rounded-lg border border-gray-200",
+  cartItemTop: "flex justify-between items-start",
+  itemTitle: "text-base md:text-lg font-semibold text-gray-900 mb-1",
+  itemAuthor: "text-gray-600 text-xs md:text-sm mb-2 md:mb-3",
+  removeBtn: "text-gray-400 hover:text-red-600 transition-colors p-1",
+  removeIcon: "h-4 w-4 md:h-5 md:w-5",
+  quantityPriceWrapper: "flex items-center justify-between flex-wrap gap-3 md:gap-4",
+  quantityControls: "flex items-center gap-3 md:gap-4",
+  quantityBox: "flex items-center bg-gray-50 rounded-md md:rounded-lg px-2 py-1 md:px-3 md:py-1.5",
+  qBtn: "text-gray-500 hover:text-emerald-600 transition-colors p-1",
+  qIcon: "h-5 w-5 md:h-6 md:w-6 cursor-pointer",
+  quantityValue: "mx-2 md:mx-3 text-gray-900 font-medium w-6 text-center text-lg md:text-xl",
+  itemTotal: "text-base md:text-lg font-semibold text-gray-900",
+  pricePerItem: "text-gray-600 text-xs md:text-sm",
+  summaryCard: "bg-white rounded-lg md:rounded-xl p-4 md:p-6 shadow-sm border border-gray-100 h-fit lg:sticky lg:top-6",
+  summaryTitle: "text-xl md:text-2xl font-bold text-gray-900 mb-4 md:mb-6",
+  summaryBreakdown: "space-y-3 md:space-y-4 mb-6 md:mb-8",
+  summaryRow: "flex justify-between",
+  summaryLabel: "text-gray-600 text-sm md:text-base",
+  summaryValue: "text-gray-900 font-medium text-sm md:text-base",
+  summaryShipping: "text-emerald-600 font-medium text-sm md:text-base",
+  summaryTotalSection: "border-t border-gray-200 pt-4 md:pt-6 mb-6 md:mb-8",
+  totalRow: "flex justify-between items-center",
+  totalLabel: "text-base md:text-lg font-bold text-gray-900",
+  totalAmount: "text-xl md:text-2xl font-bold text-emerald-600",
+  checkoutBtn: "w-full flex items-center justify-center gap-2 px-5 py-3 md:px-6 md:py-4 bg-gradient-to-r from-[#2B5876] to-[#43C6AC] text-white rounded-lg md:rounded-xl font-semibold hover:opacity-90 transition-opacity text-sm md:text-base mb-3 md:mb-4",
+  checkoutIcon: "h-4 w-4 md:h-5 md:w-5",
+  continueBtn: "w-full inline-flex items-center justify-center gap-2 px-5 py-2.5 md:px-6 md:py-3 rounded-lg md:rounded-xl border border-gray-300 text-gray-700 hover:bg-gray-50 transition-colors text-sm md:text-base",
+  continueIcon: "h-4 w-4 md:h-5 md:w-5"
+}
