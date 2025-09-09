@@ -32,7 +32,7 @@ const HomeAbout = () => {
             </div>
 
             <p className={s.aboutText}>
-              Founded with a passion for literature, BookShell has evolved into
+              Founded with a passion for literature, BookStore has evolved into
               a sanctuary for book lovers. Our mission is to connect readers
               with their next great adventure, one page at a time. We believe in
               the transformative power of stories and strive to create a

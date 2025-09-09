@@ -896,14 +896,13 @@ export const sendIconWrapperStyle = "flex items-center justify-center";
 
 
 // components/styles/dummyStyles.js (aboutStyles)
-const aboutStyles = {
+export const aboutStyles = {
   container: "min-h-screen bg-gradient-to-br from-[#f8fafc] to-[#f0fdfa] pt-24",
 
   section: "relative py-10 overflow-hidden",
-  innerContainer: "max-w-6xl mx-auto px-4 md:px-6",
+  innerContainer: "container mx-auto px-4 md:px-6",
   headingWrapper: "text-center mb-2 space-y-8",
-  heading:
-    "text-6xl md:text-7xl font-black bg-gradient-to-r from-[#43C6AC] to-[#2B5876] bg-clip-text text-transparent mb-6 leading-tight tracking-tight",
+  heading: "text-6xl md:text-7xl font-black bg-gradient-to-r from-[#43C6AC] to-[#2B5876] bg-clip-text text-transparent mb-6 leading-tight",
   underline: "absolute -bottom-4 left-1/2 transform -translate-x-1/2 w-48 h-2 bg-gradient-to-r from-[#43C6AC] to-[#F8FFAE] rounded-full",
   subText: "text-xl md:text-2xl text-gray-700 max-w-4xl mx-auto leading-relaxed font-medium",
 
@@ -933,9 +932,21 @@ const aboutStyles = {
   teamSection: "py-20 bg-gradient-to-br from-[#43C6AC]/5 to-[#F8FFAE]/5",
   sectionTitle: "text-5xl font-black bg-gradient-to-r from-[#43C6AC] to-[#2B5876] bg-clip-text text-transparent",
   sectionUnderline: "mt-6 h-1 w-24 mx-auto bg-gradient-to-r from-[#43C6AC] to-[#F8FFAE] rounded-full",
-  teamCard: "group relative bg-white/95 backdrop-blur-lg rounded-[2rem] p-6 shadow-2xl border border-[#43C6AC]/10 transition-transform hover:-translate-y-3",
-  teamImageWrapper: "relative overflow-hidden rounded-2xl mb-6",
-  teamImage: "w-full h-80 object-cover transform transition duration-500 group-hover:scale-110",
+teamCard: `
+  group relative bg-white/90 backdrop-blur-xl 
+  rounded-3xl p-8 shadow-xl border border-[#43C6AC]/20 
+  transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl
+`,
+
+teamImageWrapper: `
+  relative overflow-hidden rounded-2xl mb-6 shadow-md 
+  ring-1 ring-[#43C6AC]/10
+`,
+
+teamImage: `
+  w-full h-80 object-contain
+`,
+
   teamOverlay: "absolute inset-0 bg-gradient-to-t from-[#43C6AC]/40 to-transparent",
   teamName: "text-2xl font-bold text-gray-900 mb-1",
   teamPosition: "text-lg text-[#43C6AC] font-medium mb-6",
@@ -949,13 +960,9 @@ const aboutStyles = {
   branchInfoWrapper: "space-y-4",
   branchLocationWrapper: "flex items-center space-x-3",
   branchLocation: "text-xl font-semibold text-[#2B5876]",
-  branchHours: "flex items-center space-x-3 text-gray-600",
-};
+  branchHours: "flex items-center space-x-3 text-gray-600"
+}
 
-export default aboutStyles;
-
-
-// booksPageStyles and contactPageStyles
 
 export const booksPageStyles = {
   container: "min-h-screen pt-24 pb-16 bg-gradient-to-br from-[#f8fafc] to-[#f0fdfa]",
