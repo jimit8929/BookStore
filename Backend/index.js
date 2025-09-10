@@ -6,6 +6,7 @@ dotenv.config();
 
 import userRoutes from "./routes/user.route.js";
 import bookRoutes from "./routes/book.route.js";
+import cartRoutes from "./routes/cart.route.js";
 
 import path from "path";
 import { fileURLToPath } from "url";
@@ -26,6 +27,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/api/users", userRoutes);
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 app.use("/api/books", bookRoutes);
+app.use("/api/cart" , cartRoutes);
 
 app.get("/", (req, res) => {
   res.send("API Working");
