@@ -21,7 +21,7 @@ export const registerUser = async (req, res) => {
       .json({ success: false, message: "All fields are required" });
   }
 
-  if (validator.isEmail(email)) {
+  if (!validator.isEmail(email)) {
     return res.status(400).json({
       success: false,
       message: "Invalid Email",
@@ -46,20 +46,20 @@ export const registerUser = async (req, res) => {
     const hashedPassword = await bcrypt.hash(password, 10);
 
     const user = await UserModel.create({
-      name: username,
+      username: username,
       email: email,
       password: hashedPassword,
     });
 
     const token = createToken(user._id);
 
-    response.status(201).json({
+    res.status(201).json({
       success: true,
       message: "Account Created Successfully",
       token,
       user: {
         id: user._id,
-        username: user.name,
+        username: user.username,
         email: user.email,
       },
     });
@@ -87,6 +87,7 @@ export const loginUser = async (req, res) => {
     }
 
     const isMatch = await bcrypt.compare(password, user.password);
+    
     if (!isMatch) {
       return res
         .status(401)
@@ -95,13 +96,13 @@ export const loginUser = async (req, res) => {
 
     const token = createToken(user._id);
 
-    response.status(200).json({
+    res.status(200).json({
       success: true,
       message: "Login Successfull",
       token,
       user: {
         id: user._id,
-        username: user.name,
+        username: user.username,
         email: user.email,
       },
     });
