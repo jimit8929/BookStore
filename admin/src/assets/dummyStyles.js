@@ -171,8 +171,8 @@ export const styles = {
 
   // ADD BOOKS (page-specific)
   addBooks: {
-    page: "min-h-screen pb-28 bg-gray-50 p-6",
-    container: "max-w-4xl mx-auto",
+    addBookspage: "min-h-screen pb-28 bg-gray-50 p-6",
+    addBookscontainer: "max-w-4xl mx-auto",
     headerContainer:
       "flex flex-col md:flex-row justify-between items-start md:items-center mb-8",
     headerTitle: "text-2xl font-bold text-gray-900",
@@ -193,7 +193,7 @@ export const styles = {
     previewContainer: "mt-6",
     previewTitle: "text-sm font-medium text-gray-700 mb-3",
     previewImage: "border border-gray-300 rounded-lg w-32 h-40 overflow-hidden",
-    previewImg: "w-full h-full object-cover",
+    previewImg: "w-full h-full object-contain",
     submitContainer: "mt-8 flex justify-center",
     submitButton:
       "flex items-center gap-2 px-6 py-3 bg-[#43C6AC] text-white font-medium rounded-lg hover:bg-[#5ba193] transition-colors",
