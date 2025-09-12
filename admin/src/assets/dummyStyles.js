@@ -229,19 +229,34 @@ export const styles = {
     logoImageContainer: "bg-white p-2 rounded-lg",
     logoImage: "w-8 h-8",
     title: "text-xl font-bold text-white",
-    collapseButton: "p-2 rounded-full hover:bg-[#2B5876]/90 transition-colors",
+    collapseButton:
+      "p-2 rounded-full bg-transparent transition-colors transform duration-300 ease-out hover:bg-[#2B5876]/90 hover:scale-105 active:scale-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#2B5876]/30 shadow-sm hover:shadow-md motion-safe:transform-gpu motion-reduce:transition-none",
     nav: "space-y-1",
     navItem: (isCollapsed, isActive) =>
-      `group flex items-center px-4 py-3 rounded-lg transition-all duration-300 ${
-        isActive ? "bg-[#2B5876]/90 shadow-md" : "hover:bg-[#2B5876]/90/50"
-      } ${isCollapsed ? "justify-center" : ""}`,
+      `group flex items-center px-4 py-3 rounded-lg transition-colors transition-transform duration-200 ease-out transform will-change-transform
+   ${
+     isActive
+       ? "bg-[#2B5876]/90 text-white shadow-md"
+       : "bg-transparent text-gray-300 hover:bg-[#2B5876]/80 hover:text-white hover:shadow-sm"
+   }
+   ${isCollapsed ? "justify-center" : "gap-3"}
+   focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#2B5876]/30
+   active:scale-95 hover:scale-105 motion-safe:transform-gpu motion-reduce:transition-none`.replace(
+        /\s+/g,
+        " "
+      ),
+
     navItemInner: "flex items-center gap-3",
     iconContainer: (isActive) =>
-      `p-2 rounded-lg ${
-        isActive
-          ? "bg-white text-[#2B5876]"
-          : "bg-[#2B5876] text-gray-300 group-hover:bg-white group-hover:text-[#2B5876]"
-      }`,
+      `p-2 rounded-lg flex items-center justify-center transition-colors transition-transform duration-200 ease-out transform will-change-transform
+   ${
+     isActive
+       ? "bg-white text-[#2B5876] shadow-md"
+       : "bg-[#2B5876] text-gray-300 shadow-sm hover:bg-white hover:text-[#2B5876] group-hover:shadow-md"
+   }
+   focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#2B5876]/30
+   active:scale-95 hover:scale-105 motion-safe:transform-gpu motion-reduce:transition-none`,
+
     navLabel: (isActive) =>
       `${
         isActive
