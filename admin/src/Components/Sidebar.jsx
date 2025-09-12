@@ -19,7 +19,7 @@ const Sidebar = () => {
   const navItems = [
     { path: "/", icon: BookPlus, label: "Add Books" },
     { path: "/list-books", icon: BookOpen, label: "List Books" },
-    { path: "/orders", icon: ShoppingCart, label: "Orders" },
+    { path: "/order", icon: ShoppingCart, label: "Orders" },
   ];
 
   const toggleCollapse = () => {

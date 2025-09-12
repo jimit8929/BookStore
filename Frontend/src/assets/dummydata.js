@@ -469,7 +469,7 @@ export const navItems = [
   // Add My Orders directly to navItems
   {
     name: "My Orders",
-    path: "/orders",
+    path: "/order",
     icon: Package,
     color: "from-violet-500 to-purple-600",
   },
