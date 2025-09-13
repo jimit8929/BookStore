@@ -127,29 +127,26 @@ export const styles = {
 
   // BOOKS LIST (page-specific)
   booksList: {
-    page: "p-6 max-w-7xl mx-auto",
-    header: "text-center mb-8",
-    title:
+    listBookspage: "p-6 max-w-7xl mx-auto",
+    listBooksheader: "text-center mb-8",
+    listBookstitle:
       "text-3xl font-bold bg-gradient-to-r from-[#1A237E] to-[#43C6AC] bg-clip-text text-transparent",
-    subtitle: "text-gray-600 mt-2",
-    controlsContainer: "bg-white rounded-2xl shadow-lg p-6 mb-8",
-    controlsInner: "flex flex-col md:flex-row gap-4 justify-between",
-    searchContainer: "relative flex-1 max-w-lg",
-    searchIcon:
-      "absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none",
-    searchInput:
-      "w-full pl-10 pr-3 py-2.5 border-0 rounded-lg bg-gray-50 focus:ring-2 focus:ring-[#43C6AC]",
-    filterGroup: "relative group",
-    filterGlow:
-      "absolute -inset-0.5 bg-gradient-to-r from-[#43C6AC] to-[#F8FFAE] rounded-lg blur opacity-0 group-hover:opacity-20",
-    filterContainer: "relative flex items-center",
-    filterIcon: "absolute left-3 h-5 w-5 text-gray-400",
-    filterSelect:
-      "pl-10 pr-8 py-2.5 bg-gray-50 border-0 rounded-lg focus:ring-2 focus:ring-[#43C6AC]",
-    booksTableContainer: "bg-white rounded-2xl shadow-lg overflow-hidden",
-    tableHead: "bg-gradient-to-r from-[#1A237E] to-[#43C6AC] text-white",
-    tableHeader: "px-6 py-4 text-left cursor-pointer",
-    tableHeaderContent: "flex items-center",
+    listBookssubtitle: "text-gray-600 mt-2",
+controlsContainer: "bg-white rounded-2xl shadow-lg p-6 mb-8",
+controlsInner: "flex flex-col md:flex-row gap-4 justify-between",
+searchContainer: "relative flex-1 max-w-lg",
+searchIcon: "absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none",
+searchInput: "w-full pl-10 pr-3 py-2.5 border-0 rounded-lg bg-gray-50 focus:ring-2 focus:ring-[#43C6AC]",
+filterGroup: "relative group",
+filterGlow: "absolute -inset-0.5 bg-gradient-to-r from-[#43C6AC] to-[#F8FFAE] rounded-lg blur opacity-0 group-hover:opacity-20",
+filterContainer: "relative flex items-center",
+filterIcon: "absolute left-3 h-5 w-5 text-gray-400",
+filterSelect: "pl-10 pr-8 py-2.5 bg-gray-50 border-0 rounded-lg focus:ring-2 focus:ring-[#43C6AC] appearance-none",
+booksTableContainer: "bg-white rounded-2xl shadow-lg overflow-hidden",
+table: "min-w-full divide-y divide-gray-200",           // table classes (applied to <table>)
+tableHead: "bg-gradient-to-r from-[#1A237E] to-[#43C6AC] text-white",
+tableHeader: "px-6 py-4 text-left cursor-pointer select-none",
+tableHeaderContent: "flex items-center gap-2",
     tableRow: "hover:bg-gray-50",
     tableCell: "px-6 py-4",
     bookImage:
