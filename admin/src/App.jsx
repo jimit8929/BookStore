@@ -2,6 +2,7 @@ import Sidebar from './Components/Sidebar'
 import { Route, Routes } from 'react-router-dom'
 import AddBook from './Components/AddBook'
 import ListBooks from './Components/ListBooks'
+import Orders from './Components/Orders'
 
 const App = () => {
   return (
@@ -12,6 +13,7 @@ const App = () => {
         <Routes>
           <Route path='/' element={<AddBook/>}/>
           <Route path="/list-books" element={<ListBooks/>}/>
+          <Route path='/order' element={<Orders/>}/>
         </Routes>
       </main>
     </div>

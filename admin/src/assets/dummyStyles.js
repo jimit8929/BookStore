@@ -61,6 +61,10 @@ export const styles = {
     footer:
       "px-6 py-4 bg-gray-50 flex flex-col sm:flex-row justify-between items-start sm:items-center",
     footerText: "text-sm text-gray-600",
+      footerLegend: "flex gap-4",
+  legendItem: "flex items-center gap-2",
+  legendDot: (color) => `w-3 h-3 ${color} rounded-full`,
+  legendLabel: "text-xs text-gray-600",
   },
 
   // Empty State (global)
