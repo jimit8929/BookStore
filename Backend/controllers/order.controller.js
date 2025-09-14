@@ -119,7 +119,7 @@ export const createOrder = async (req, res, next) => {
     // Cash on Delivery flow
     const newOrder = new OrderModel({
       ...baseOrderData,
-      paymentStatus: "Pending", // or "COD"
+      paymentStatus: "Unpaid", 
     });
 
     await newOrder.save();
