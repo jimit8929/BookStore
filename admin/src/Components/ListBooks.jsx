@@ -1,4 +1,4 @@
-import { Filter } from "lucide-react";
+import { BookOpen, Filter, Trash2 } from "lucide-react";
 import { styles as s } from "../assets/dummyStyles.js";
 import { useEffect, useMemo, useState } from "react";
 import axios from "axios";
@@ -82,6 +82,22 @@ const ListBooks = () => {
     </div>
   );
 
+  //Delete Book Using ID
+  const handleDelete = async (id) => {
+    if (!window.confirm("Are you Sure?")) return;
+
+    try {
+      await axios.delete(`${BASE_URL}/api/books/${id}`, {
+        validateStatus: (status) => [200, 204, 500].includes(status),
+      });
+
+      setBooks((prev) => prev.filter((book) => book._id !== id));
+    } catch (error) {
+      console.error(error);
+      alert(error.response?.data?.message || "Failed to Delete Book");
+    }
+  };
+
   return (
     <div className={s.booksList.listBookspage}>
       <div className={s.booksList.listBooksheader}>
@@ -133,10 +149,11 @@ const ListBooks = () => {
                       setSortConfig(sortConfig === header.key ? "" : header.key)
                     }
                   >
-                    <div className={s.booksList.tableHeaderContent}>{header.label}
-                      {header.key && sortConfig === header.key && <span className="ml-1">
-                        ↑
-                      </span> }
+                    <div className={s.booksList.tableHeaderContent}>
+                      {header.label}
+                      {header.key && sortConfig === header.key && (
+                        <span className="ml-1">↑</span>
+                      )}
                     </div>
                   </th>
                 ))}
@@ -147,13 +164,60 @@ const ListBooks = () => {
               {displayedBooks.map((book) => (
                 <tr className={s.booksList.tableRow} key={book._id}>
                   <td className={s.booksList.tableCell}>
-                    <div className="flex items-center"></div>
+                    <div className="flex items-center">
+                      {book.image && (
+                        <img
+                          src={`http://localhost:5000${book.image}`}
+                          alt={book.title}
+                          className="h-10 w-8 object-cover rounded"
+                        />
+                      )}
+                      <div className="ml-4">
+                        <div className={s.booksList.bookTitle}>
+                          {book.title}
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+
+                  <td className={s.booksList.tableCell}>{book.author}</td>
+                  <td className={s.booksList.tableCell}>
+                    <span className={s.booksList.categoryBadge}>
+                      {book.category}
+                    </span>
+                  </td>
+
+                  <td className={s.booksList.tableCell}>₹{book.price}</td>
+                  <td className={s.booksList.tableCell}>
+                    <RatingStar rating={book.rating} />
+                  </td>
+
+                  <td className={`${s.addBooks.tableCell} flex-col gap-3`}>
+                    <button
+                      onClick={() => handleDelete(book._id)}
+                      className={s.booksList.deleteButton}
+                    >
+                      <Trash2 className="h-5 w-5" />
+                    </button>
                   </td>
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
+
+        {!displayedBooks.length && !loading && (
+          <div className={s.booksList.emptyState}>
+            <div className={s.emptyState.iconContainer}>
+              <BookOpen className={s.emptyState.icon} />
+            </div>
+
+            <h3 className={s.emptyState.title}>No Books Found</h3>
+            <p className={s.emptyState.message}>
+              Try Adjusting your Filter or sort Options
+            </p>
+          </div>
+        )}
       </div>
     </div>
   );
