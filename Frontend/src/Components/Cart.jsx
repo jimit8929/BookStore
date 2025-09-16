@@ -6,45 +6,70 @@ import {
   Minus,
   Plus,
   ShoppingBag,
-  Trash,
+  Trash2,
 } from "lucide-react";
 
 import { useCart } from "../CartContext/CartContext.jsx";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import { Link } from "react-router-dom";
+import axios from "axios";
+const BASE_URL = "http://localhost:5000/api";
+const IMAGE_BASE = BASE_URL.replace("/api", "");
 
 const Cart = () => {
-  const { cart, dispatch } = useCart();
+  const { cart, updateCartItem, removeFromCart } = useCart();
   const total = cart.items.reduce((sum, i) => sum + i.price * i.quantity, 0);
+
+  const [images, setImages] = useState({});
+
+  useEffect(() => {
+    axios
+      .get(`${BASE_URL}/books`)
+      .then(({ data }) => {
+        const map = {};
+        data.forEach((book) => {
+          map[book._id] = book.image;
+        });
+
+        console.log("Images Key ", Object.keys(map));
+        setImages(map);
+      })
+      .catch((err) => console.error("Failed to load Books:", err));
+  }, []);
 
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
 
-  const getImageSource = (item) => {
-    if (typeof item.image === "string") return item.image;
-
-    return item.image?.default;
+  const getImageSrc = (item) => {
+    const relpath = images[item.id];
+    if (relpath) {
+      return `${IMAGE_BASE}${relpath}`;
+    }
   };
 
   const inc = (item) =>
-    dispatch({
-      type: "INCREMENT",
-      payload: { id: item.id, source: item.source },
+    updateCartItem({
+      id: item.id,
+      source: item.source,
+      quantity: item.quantity + 1,
     });
 
-  const dec = (item) =>
-    dispatch({
-      type: "DECREMENT",
-      payload: { id: item.id, source: item.source },
-    });
+  const dec = (item) => {
+    const newQty = item.quantity - 1;
+    if (newQty > 0) {
+      updateCartItem({
+        id: item.id,
+        source: item.source,
+        quantity: newQty,
+      });
+    } else {
+      removeFromCart({ id: item.id, source: item.source });
+    }
+  };
 
-  const remove = (item) =>
-    dispatch({
-      type: "REMOVE_ITEM",
-      payload: { id: item.id, source: item.source },
-    });
+  const remove = (item) => removeFromCart({ id: item.id, source: item.source });
 
   return (
     <div className={s.container}>
@@ -87,7 +112,7 @@ const Cart = () => {
                 >
                   <div className={s.cartItemContent}>
                     <img
-                      src={getImageSource(item)}
+                      src={getImageSrc(item)}
                       alt={item.title}
                       className={s.cartItemImage}
                     />
@@ -103,7 +128,7 @@ const Cart = () => {
                           onClick={() => remove(item)}
                           className={s.removeBtn}
                         >
-                          <Trash className={s.removeIcon} />
+                          <Trash2 className={s.removeIcon} />
                         </button>
                       </div>
 
@@ -173,10 +198,10 @@ const Cart = () => {
                 </div>
               </div>
 
-              <button className={s.checkoutBtn}>
+              <Link to="/checkout" className={s.checkoutBtn}>
                 Checkout Now
                 <ArrowRight className={s.checkoutIcon} />
-              </button>
+              </Link>
 
               <Link to="/books" className={s.continueBtn}>
                 <BookOpen className={s.continueIcon} /> Continue Shopping

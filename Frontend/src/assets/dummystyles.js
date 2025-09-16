@@ -985,7 +985,7 @@ export const booksPageStyles = {
   booksGrid: "grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6",
   bookCard: "group bg-white/90 backdrop-blur-sm rounded-xl md:rounded-2xl p-4 md:p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1",
   imageWrapper: "relative aspect-square mb-4 md:mb-6 overflow-hidden rounded-lg md:rounded-xl",
-  imageStyle: "w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300",
+  imageStyle: "w-full h-full object-contain transform group-hover:scale-105 transition-transform duration-300",
   title: "text-lg md:text-xl font-semibold text-gray-800 mb-1 md:mb-2",
   author: "text-sm text-gray-500 mb-2 md:mb-3",
   ratingWrapper: "flex items-center gap-1 text-yellow-400 text-sm mb-2 md:mb-3",
