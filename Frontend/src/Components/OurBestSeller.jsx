@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { ourBestSellersStyles as styles } from "../assets/dummystyles";
 import {
   ChevronLeft,
@@ -8,8 +8,11 @@ import {
   ShoppingCart,
   Star,
 } from "lucide-react";
-import { obsbooks, bgColors } from "../assets/dummydata.js";
+import { bgColors } from "../assets/dummydata.js";
 import { useCart } from "../CartContext/CartContext.jsx";
+import axios from "axios";
+
+const BASE_URL = "http://localhost:5000";
 
 const OurBestSeller = () => {
   const scrollRef = useRef(null);
@@ -26,15 +29,48 @@ const OurBestSeller = () => {
       behavior: "smooth",
     });
 
-  const { cart, dispatch } = useCart();
-  const inCart = (id) => cart?.items?.some((item) => item.id === id);
+  const { cart, addToCart, updateCartItem } = useCart();
+  const [books, setBooks] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  //Fetch Books from Server
+  useEffect(() => {
+    const fetchBooks = async () => {
+      setLoading(true);
+
+      try {
+        const res = await axios.get(`${BASE_URL}/api/books`);
+        setBooks(Array.isArray(res.data) ? res.data : res.data.books || []);
+      } catch (err) {
+        console.error("Error Fetching best Books", err);
+        setError(err.message || "Failed to Fetch Books");
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchBooks();
+  }, []);
+
+  const inCart = (id) => cart.items.some((item) => item.id === id);
   const getQty = (id) =>
     cart?.items?.find((item) => item.id === id)?.quantity || 0;
 
-  const handleAdd = (book) =>
-    dispatch({ type: "ADD_ITEM", payload: { ...book, quantity: 1 } });
-  const handleInc = (id) => dispatch({ type: "INCREMENT", payload: { id } });
-  const handleDec = (id) => dispatch({ type: "DECREMENT", payload: { id } });
+  const handleAdd = (book) => {
+    addToCart({
+      id: book._id,
+      title: book.title,
+      price: book.price,
+      quantity: 1,
+    });
+  };
+
+  const handleInc = (id) => updateCartItem({ id, quantity: getQty(id) + 1 });
+  const handleDec = (id) => updateCartItem({ id, quantity: getQty(id) - 1 });
+
+
+  if(loading) return <div className={styles.loadingTitle}>Loading Best Sellers...</div>
+  if(error) return <div className={styles.errorTitle}>{error}</div>
 
   return (
     <section className={styles.section}>
@@ -64,15 +100,15 @@ const OurBestSeller = () => {
 
         {/* Books Section */}
         <div className={styles.scrollContainer} ref={scrollRef}>
-          {obsbooks.map((book, index) => (
+          {books.map((book, index) => (
             <div
               className={styles.card(bgColors[index % bgColors.length])}
-              key={book.id}
+              key={book._id}
             >
               <div className={styles.cardInner}>
                 <div className="space-y-3 md:space-y-4">
                   <div className={styles.stars}>
-                    {[...Array(5)].map((_, i) => (
+                    {[...Array(Math.floor(book.rating || 0))].map((_, i) => (
                       <Star
                         className="h-4 w-4 md:h-5 md:w-5 text-amber-400 fill-amber-500"
                         key={i}
@@ -94,21 +130,21 @@ const OurBestSeller = () => {
                     <span className={styles.price}>
                       ₹ {book.price.toFixed(2)}
                     </span>
-                    {inCart(book.id) ? (
+                    {inCart(book._id) ? (
                       <div className={styles.qtyWrapper}>
                         <button
-                          onClick={() => handleDec(book.id)}
+                          onClick={() => handleDec(book._id)}
                           className={styles.qtyBtn}
                         >
                           <Minus size={18} className="cursor-pointer" />
                         </button>
 
                         <span className={styles.qtyText}>
-                          {getQty(book.id)}
+                          {getQty(book._id)}
                         </span>
 
                         <button
-                          onClick={() => handleInc(book.id)}
+                          onClick={() => handleInc(book._id)}
                           className={styles.qtyBtn}
                         >
                           <Plus size={18} className="cursor-pointer" />
@@ -128,7 +164,7 @@ const OurBestSeller = () => {
               </div>
 
               <img
-                src={book.image}
+                src={book.image.startsWith("http") ? book.image : `${BASE_URL}${book.image}`}
                 alt={book.title}
                 className={styles.bookImage}
               />

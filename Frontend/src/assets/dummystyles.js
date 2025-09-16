@@ -717,6 +717,8 @@ export const scrollText =
 export const ourBestSellersStyles = {
   section: "py-12 md:py-16 bg-gray-50",
   container: "max-w-7xl mx-auto px-4 md:px-6",
+  loadingTitle: "text-3xl md:text-4xl font-bold text-gray-400 animate-pulse",
+   errorTitle: "text-2xl md:text-3xl font-semibold text-red-600 bg-red-50 px-3 py-2 rounded-lg border border-red-200",
 
   // Header
   headerWrapper: "flex flex-col md:flex-row justify-between items-start md:items-center mb-8 md:mb-12 gap-4 md:gap-6",
@@ -752,7 +754,7 @@ export const ourBestSellersStyles = {
   addButton: "flex items-center gap-1.5 md:gap-2 px-4 md:px-6 py-2 md:py-3 bg-gradient-to-r from-[#1A237E] to-[#43C6AC] text-white rounded-lg md:rounded-xl font-medium hover:scale-[1.02] transition-transform text-sm md:text-base",
 
   // Book Image
-bookImage: "absolute right-8 md:right-36 bottom-4 md:bottom-6 w-80 h-40 md:w-[120px] md:h-[180px] object-cover rounded-lg md:rounded-xl border-2 md:border-4 border-white shadow-xl md:shadow-2xl transform group-hover:-translate-y-1 md:group-hover:-translate-y-2 transition-transform"
+bookImage: "absolute right-8 md:right-36 bottom-4 md:bottom-6 w-80 h-40 md:w-[120px] md:h-[180px] object-contain rounded-lg md:rounded-xl border-2 md:border-4 border-white shadow-xl md:shadow-2xl transform group-hover:-translate-y-1 md:group-hover:-translate-y-2 transition-transform"
 }
 
 // homeBooksStyles
@@ -767,7 +769,7 @@ export const homeBooksStyles = {
   grid: "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8",
   bookCard: "group relative",
   imageWrapper: "relative h-72 overflow-hidden rounded-xl border-4 border-[#43C6AC]/20 mb-4",
-  image: "w-full h-full object-cover transition-transform duration-500 group-hover:scale-105",
+  image: "w-full h-full object-contain transition-transform duration-500 group-hover:scale-105",
   rating: "absolute top-2 right-2 bg-white/90 px-3 py-1 rounded-full flex items-center",
   title: "text-xl font-bold text-gray-900 mb-2",
   author: "text-gray-600 mb-3",
