@@ -26,32 +26,46 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!formData.email || !formData.password) {
+    const {email , password} = formData;
+
+    if(!email.trim() || !password.trim()){
       setToast({
-        visible: true,
-        message: "All fields are required",
-        type: "error",
-      });
+        visible : true,
+        message : "All fields are required",
+        type : "error",
+      })
       return;
     }
 
     setIsSubmitting(true);
 
-    try {
-      localStorage.setItem("authToken", "demo-token");
-      setToast({
-        visible: true,
-        message: "Login Successfull",
-        type: "success",
-      });
-      setTimeout(() => {
-        navigate("/");
-      }, 2000);
-    } catch {
-      setToast({ visible: true, message: "Login Failed", type: "error" });
-    } finally {
+    try{
+      const res = await fetch("http://localhost:5000/api/users/login" , {
+        method : "POST",
+        headers:{
+          "Content-Type":"application/json",
+        },
+        body:JSON.stringify({email , password}),
+      })
+
+      const data = await res.json();
+
+      if(!res.ok){
+        throw new Error(data.message || "Invalid Credentials");
+      }
+
+      //Save Token
+      localStorage.setItem("authToken" , data.token);
+      setToast({visible:true , message : "Login Successfull" , type:"success"});
+      setTimeout(() => navigate("/"),1000);
+    }
+    catch(error){
+      setToast({visible : true, message : error.message , type : "error"});
+    }
+    finally{
       setIsSubmitting(false);
     }
+
   };
 
   const handleSignOut = () => {

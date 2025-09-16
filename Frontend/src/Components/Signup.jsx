@@ -25,7 +25,7 @@ const SignUp = () => {
     }
   }, [toast, navigate]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
 
     const { username, email, password } = formData;
@@ -40,9 +40,27 @@ const SignUp = () => {
     }
 
     setToast({ visible: true, message: "Creating Account...", type: "info" });
-    setTimeout(() => {
-      setToast({ visible: true, message: "Account Created!", type: "success" });
-    }, 2000);
+    
+    try{
+      const res = await fetch("http://localhost:5000/api/users/register" , {
+        method : "POST",
+        headers:{
+          "Content-Type" : "application/json",
+        },
+        body:JSON.stringify({username , email , password}),
+      });
+
+      const data = await res.json();
+
+      if(!res.ok){
+        throw new Error(data.message || "Something went wrong");
+      }
+
+      setToast({visible:true, message:"Account Created Successfully", type:"success"});
+    }
+    catch(error){
+      setToast({visible:true , message : error.message , type : "error"});
+    }
   };
 
   return (
