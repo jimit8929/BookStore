@@ -9,6 +9,8 @@ import ContactPage from "./Pages/ContactPage";
 
 import Login from "./Components/Login";
 import SignUp from "./Components/Signup";
+import Checkout from "./Components/Checkout";
+import ProtectedRoute from "./Pages/ProtectedRoute";
 
 const App = () => {
   return (
@@ -18,7 +20,9 @@ const App = () => {
       <Route path="/cart" element={<CartPage />} />
       <Route path="/books" element={<BooksPage />} />
       <Route path="/contact" element={<ContactPage />} />
-
+      <Route path="/checkout" element={<ProtectedRoute>
+        <Checkout/>
+      </ProtectedRoute>}/>
 
       <Route path='/login' element={<Login/>}/>
       <Route path='/signup' element={<SignUp/>}/>
