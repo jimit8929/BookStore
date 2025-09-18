@@ -11,6 +11,7 @@ import Login from "./Components/Login";
 import SignUp from "./Components/Signup";
 import Checkout from "./Components/Checkout";
 import ProtectedRoute from "./Pages/ProtectedRoute";
+import MyOrders from "./Components/MyOrders";
 
 const App = () => {
   return (
@@ -24,6 +25,7 @@ const App = () => {
         <Checkout/>
       </ProtectedRoute>}/>
 
+      <Route path="/order" element={<MyOrders/>}/>
       <Route path='/login' element={<Login/>}/>
       <Route path='/signup' element={<SignUp/>}/>
 
