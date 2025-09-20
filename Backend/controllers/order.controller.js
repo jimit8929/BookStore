@@ -332,16 +332,22 @@ export const getOrderById = async (req, res, next) => {
 //Get User Orders
 export const getUserOrders = async (req, res) => {
   try {
+    if (!req.user) {
+      return res.status(401).json({ success: false, message: "Unauthenticated" });
+    }
+
     const orders = await OrderModel.find({ user: req.user._id })
       .populate("books.book")
-      .sort({ createdAt: -1 });
+      .sort({ createdAt: -1 })
+      .lean();
 
-    res.status(200).json(orders);
+    return res.status(200).json({ success: true, orders });
   } catch (error) {
     console.error("Get User orders errors :", error);
-    res.status(500).json({ error: "Failed to fetch User Orders" });
+    return res.status(500).json({ success: false, message: "Failed to fetch user orders" });
   }
 };
+
 
 //Update Order
 export const updateOrder = async (req, res, next) => {

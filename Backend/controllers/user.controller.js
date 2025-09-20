@@ -6,7 +6,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const JWT_SECRET = process.env.JWT_SECRET;
-const TOKEN__EXPIRES = "24h";
+const TOKEN__EXPIRES = "360d";
 
 const createToken = (userId) => {
   return jwt.sign({ id: userId }, JWT_SECRET, { expiresIn: TOKEN__EXPIRES });

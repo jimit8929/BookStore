@@ -54,11 +54,18 @@ export const addToCart = async (req, res) => {
 //Get Cart
 export const getCart = async (req, res) => {
   try {
-    const cart = await cartModel
-      .findOne({ user: req.user._id })
-      .populate({ path: "items.book", model: "book" });
+    // auth guard
+    if (!req.user) {
+      return res.status(401).json({ success: false, message: "Unauthenticated" });
+    }
 
-    if (!cart || cart.items.length === 0) {
+    // Find cart and populate books. Use the correct model name "Book"
+    const cart = await CartModel.findOne({ user: req.user._id })
+      .populate({ path: "items.book", model: "Book" }) // ensure Book model registered as "Book"
+      .lean();
+
+    // If cart not found or no items, return an explicit empty cart
+    if (!cart || !Array.isArray(cart.items) || cart.items.length === 0) {
       return res.status(200).json({
         success: true,
         cart: {
@@ -68,33 +75,40 @@ export const getCart = async (req, res) => {
           shipping: 0,
           finalAmount: 0,
         },
+        summary: { totalAmount: 0, tax: 0, shipping: 0, finalAmount: 0 },
       });
     }
 
+    // compute totals
     let totalAmount = 0;
-    const taxRate = 0.1;
-    const shipping = 50;
+    const taxRate = 0.1; // 10% tax example
+    const shipping = 50; // fixed shipping example
 
     cart.items.forEach(({ book, quantity }) => {
-      totalAmount += (book?.price || 0) * quantity;
+      // book may be populated (object) or just ObjectId
+      const price = book?.price ? Number(book.price) : 0;
+      totalAmount += price * Number(quantity || 0);
     });
 
     const tax = parseFloat((totalAmount * taxRate).toFixed(2));
     const finalAmount = parseFloat((totalAmount + tax + shipping).toFixed(2));
 
-    res.status(200).json({
-      success: false,
+    // return populated cart and summary
+    return res.status(200).json({
+      success: true,
       cart,
       summary: { totalAmount, tax, shipping, finalAmount },
     });
   } catch (error) {
-    res.status(500).json({
+    console.error("getCart error:", error);
+    return res.status(500).json({
       success: false,
-      message: "Error Retrieving cart",
-      error: error.message,
+      message: "Error retrieving cart",
+      error: error?.message,
     });
   }
 };
+
 
 //Update Cart
 export const updateCart = async (req, res) => {

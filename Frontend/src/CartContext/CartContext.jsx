@@ -85,32 +85,45 @@ export const CartProvider = ({ children }) => {
   // Fetch stored cart from server if authenticated
   useEffect(() => {
     const fetchCart = async () => {
-      const token = localStorage.getItem("authToken");
-      if (!token) return;
       try {
+        // SSR guard
+        if (typeof window === "undefined") return;
+
+        const token = localStorage.getItem("authToken");
+        if (!token) return;
+
         const { data } = await axios.get("http://localhost:5000/api/cart", {
           headers: { Authorization: `Bearer ${token}` },
         });
-        // flatten each { book, quantity } into { id, title, price, author, quantity }
-        const normalized = data.cart.items.map((item) => ({
-          id: item.book._id,
-          title: item.book.title,
-          price: item.book.price,
-          author: item.book.author,
-          source: item.book.source, // if you’re using `source`
-          quantity: item.quantity,
-        }));
+
+        // Defensive: check success and presence
+        const cartObj = data?.cart ?? (data?.success ? data : null);
+        const items = Array.isArray(cartObj?.items) ? cartObj.items : [];
+
+        const normalized = items.map((item) => {
+          const book = item.book || {};
+          return {
+            id: book._id || book.id || item.bookId,
+            title: book.title || item.title,
+            price: Number(book.price ?? item.price ?? 0),
+            author: book.author || item.author,
+            source: book.source || item.source,
+            quantity: Number(item.quantity ?? 1),
+          };
+        });
+
         dispatch({ type: "LOAD_CART", payload: normalized });
       } catch (err) {
-        if (err.response?.status === 401) {
-          console.warn("Token invalid or expired—using local cart");
-        } else {
-          console.error("Failed to load cart:", err);
-        }
+        console.error("Failed to load cart:", {
+          message: err.message,
+          status: err?.response?.status,
+          responseData: err?.response?.data,
+        });
       }
     };
+
     fetchCart();
-  }, []);
+  }, [dispatch]);
 
   // Persist cart items locally
   useEffect(() => {
