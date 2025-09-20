@@ -25,6 +25,8 @@ const App = () => {
         <Checkout/>
       </ProtectedRoute>}/>
 
+
+      <Route path="/order"/>
       <Route path="/order" element={<MyOrders/>}/>
       <Route path='/login' element={<Login/>}/>
       <Route path='/signup' element={<SignUp/>}/>

@@ -90,10 +90,9 @@ export const createOrder = async (req, res, next) => {
         amount: amountInPaise,
         currency: "INR",
         receipt: orderId,
-        payment_capture: 1, // auto-capture; set 0 if you want manual capture
+        payment_capture: 1, 
       });
 
-      // store order in DB with razorpay order id (payment will be verified later)
       const newOrder = new OrderModel({
         ...baseOrderData,
         paymentStatus: "Unpaid",
